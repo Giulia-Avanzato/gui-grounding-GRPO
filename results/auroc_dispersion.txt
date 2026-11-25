@@ -1,0 +1,12 @@
+grpo_s0_blur_2.jsonl                   n= 334 err= 168  AUROC=0.769 [0.715,0.819]  disp media: giuste=0.070 sbagliate=0.163  disp=0: 0%
+   grpo_s0_blur_2.jsonl [icon]         n= 140 err=  87  AUROC=0.802 [0.723,0.870]  disp media: giuste=0.066 sbagliate=0.186  disp=0: 0%
+   grpo_s0_blur_2.jsonl [text]         n= 194 err=  81  AUROC=0.734 [0.660,0.805]  disp media: giuste=0.072 sbagliate=0.139  disp=0: 0%
+grpo_s0_blur_4.jsonl                   n= 334 err= 264  AUROC=0.688 [0.615,0.763]  disp media: giuste=0.137 sbagliate=0.221  disp=0: 0%
+   grpo_s0_blur_4.jsonl [icon]         n= 140 err= 114  AUROC=0.770 [0.656,0.875]  disp media: giuste=0.118 sbagliate=0.256  disp=0: 0%
+   grpo_s0_blur_4.jsonl [text]         n= 194 err= 150  AUROC=0.615 [0.510,0.719]  disp media: giuste=0.148 sbagliate=0.194  disp=0: 0%
+grpo_s0_blur_8.jsonl                   n= 334 err= 304  AUROC=0.531 [0.418,0.642]  disp media: giuste=0.194 sbagliate=0.215  disp=0: 0%
+   grpo_s0_blur_8.jsonl [icon]         n= 140 err= 128  AUROC=0.512 [0.332,0.707]  disp media: giuste=0.209 sbagliate=0.223  disp=0: 0%
+   grpo_s0_blur_8.jsonl [text]         n= 194 err= 176  AUROC=0.557 [0.401,0.707]  disp media: giuste=0.184 sbagliate=0.209  disp=0: 0%
+grpo_s0_none_0.0.jsonl                 n= 330 err=  93  AUROC=0.763 [0.708,0.816]  disp media: giuste=0.057 sbagliate=0.153  disp=0: 0%
+   grpo_s0_none_0.0.jsonl [icon]       n= 137 err=  53  AUROC=0.765 [0.684,0.841]  disp media: giuste=0.067 sbagliate=0.190  disp=0: 0%
+   grpo_s0_none_0.0.jsonl [text]       n= 193 err=  40  AUROC=0.745 [0.657,0.822]  disp media: giuste=0.051 sbagliate=0.104  disp=0: 0%
