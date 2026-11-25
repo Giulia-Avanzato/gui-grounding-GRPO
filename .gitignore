@@ -6,3 +6,7 @@ runs/
 results/overlays/
 *.safetensors
 *.bin
+runs/
+*.bak
+runs/
+*.bak
