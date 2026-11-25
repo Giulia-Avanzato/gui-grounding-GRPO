@@ -118,7 +118,52 @@ gg/reward.py     format + grounding rewards        gg/stats.py    bootstrap CIs
 gg/data.py       loading, resizing, prompts        scripts/{eval,train_grpo,analyze}.py
 tests/test_core.py  17 CPU tests (no GPU needed)
 ```
+## Results (single seed, n=334 desktop examples from ScreenSpot)
 
+Accuracy = click falls inside the target box. 95% bootstrap CIs.
+
+| Model | Accuracy | 95% CI |
+|---|---|---|
+| Base (Qwen2.5-VL-3B) | 0.665 | [0.614, 0.713] |
+| GRPO, binary reward (seed 0) | 0.680 | [0.629, 0.728] |
+| GRPO, shaped reward (seed 0) | 0.710 | [0.659, 0.757] |
+
+Paired differences on the same 334 examples:
+
+| Comparison | Difference | 95% CI |
+|---|---|---|
+| shaped - base | +4.5 pts | [+0.9, +8.1] |
+| binary - base | +1.5 pts | [-1.8, +4.5] (includes 0) |
+| shaped - binary | +3.0 pts | [+0.9, +5.4] |
+
+The base model rarely uses the strict answer format (0.04 vs 0.99 after GRPO), but
+accuracy is computed with a lenient parser, so the gain is not just a format effect.
+
+### Robustness to blur (shaped model)
+
+Accuracy: 0.710 (clean), 0.497 (blur 2), 0.210 (blur 4), 0.090 (blur 8).
+
+Can sampling dispersion (4 samples, no ground truth needed) flag wrong clicks?
+AUROC of dispersion for predicting an error, computed within each condition:
+
+| Condition | AUROC | 95% CI |
+|---|---|---|
+| Clean | 0.76 | [0.71, 0.82] |
+| Blur 2 | 0.77 | [0.72, 0.82] |
+| Blur 4 | 0.69 | [0.62, 0.76] |
+| Blur 8 | 0.53 | [0.42, 0.64] (chance) |
+
+Dispersion is a moderate error signal on clean and lightly blurred inputs and carries
+no information at the strongest blur. Full output: `results/auroc_dispersion.txt`.
+
+### Limitations
+
+- One seed per run: the CIs capture test-set sampling noise, not training variance.
+  The shaped vs binary difference needs more seeds to be trusted.
+- One model (3B, 4-bit + LoRA), one dataset split, one corruption type (blur).
+- 4 of 334 clean examples had no valid dispersion and were excluded from the AUROC.
+- An AUROC around 0.76 is a useful but not reliable error detector.
+- 
 ## References
 
 - Lu et al., *UI-R1: Enhancing Action Prediction of GUI Agents by Reinforcement Learning* (2025), arXiv:2503.21620
